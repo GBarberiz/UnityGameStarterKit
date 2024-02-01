@@ -5,7 +5,7 @@ Welcome to the 2D Movement section of the Unity Game Starter Kit! This module ha
 ## Contents
 #### Note: All projects below will include walking, running, dashing, and jumping mechanics.
 
-### 1. Platformer Movement
+### 1. Platformer Movement (working)
 Allows the player to move freely in all directions in a 2D Platformer environment.
 
 ### 2. Free Top-Down Movement (not finished yet)
