@@ -1,17 +1,17 @@
-# Movimentação em 2D para Unity
+# 2D Movement for Unity
 
-Bem-vindo à seção de Movimentação em 2D Game Starter Kit para Unity! Este módulo foi projetado para oferecer uma base para uso no desenvolvimento de jogos 2D na Unity, proporcionando uma variedade de abordagens de movimentação para atender às suas necessidades.
+Welcome to the 2D Movement section of the Unity Game Starter Kit! This module has been designed to provide a foundation for developing 2D games in Unity, offering a variety of movement approaches to suit your needs.
 
-## Conteúdo
-### Ps. Todos a seguir os projetos conterão as mecânicas de caminhada, corrida, avanço e pulo.
+## Contents
+#### Note: All projects below will include walking, running, dashing, and jumping mechanics.
 
-### 1. Movimentação de jogos Plataforma
-Permite que o jogador mova-se livremente em todas as direções em um ambiente 2D Plataforma.
+### 1. Platformer Movement
+Allows the player to move freely in all directions in a 2D Platformer environment.
 
-### 2. Movimentação Livre Top-Down
-Permite que o jogador mova-se livremente em todas as direções em um ambiente 2D Top-Down, proporcionando uma experiência de exploração sem restrições.
+### 2. Free Top-Down Movement (not finished yet)
+Allows the player to move freely in all directions in a 2D Top-Down environment.
 
-### 3. Movimentação por Tiles Top-Down
-Define uma grade de tiles, permitindo que o jogador se mova de tile em tile, proporcionando uma sensação mais estruturada ao ambiente.
+### 3. Top-Down Tile-based Movement (not finished yet)
+Defines a tile grid, allowing the player to move from tile to tile.
 
-Sinta-se à vontade para reportar problemas ou propor melhorias.
+Feel free to report issues or suggest improvements.
