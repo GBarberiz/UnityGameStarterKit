@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public event Action Jumped;
 
     #endregion
-
     private float _time;
 
     public GameObject Player => player;
@@ -47,6 +46,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         {
             JumpDown = Input.GetButtonDown("Jump"),
             JumpHeld = Input.GetButton("Jump"),
+            DashDown = Input.GetButtonDown("Dash"),
             Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
         };
 
@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour, IPlayerController
         {
             _jumpToConsume = true;
             _timeJumpWasPressed = _time;
+        }
+        if (_frameInput.DashDown)
+        {
+            _dashToConsume = true;
         }
     }
 
@@ -64,6 +68,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         HandleJump();
         HandleDirection();
         HandleGravity();
+        HadleDash();
 
         ApplyMovement();
     }
@@ -119,11 +124,14 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void HandleJump()
     {
-        if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y > 0) _endedJumpEarly = true;
+        if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y > 0) 
+            _endedJumpEarly = true;
 
-        if (!_jumpToConsume && !HasBufferedJump) return;
+        if (!_jumpToConsume && !HasBufferedJump) 
+            return;
 
-        if (_grounded || CanUseCoyote) ExecuteJump();
+        if (_grounded || CanUseCoyote) 
+            ExecuteJump();
 
         _jumpToConsume = false;
     }
@@ -165,7 +173,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
         else
         {
             float inAirGravity = _stats.FallAcceleration;
-            if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
+            if (_endedJumpEarly && _frameVelocity.y > 0) 
+                inAirGravity *= _stats.JumpEndEarlyGravityModifier;
             
             _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
         }
@@ -173,6 +182,23 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     #endregion
 
+    #region Dashing
+    private bool _dashToConsume;
+    private float _timeLastDash = float.MinValue;
+    private void HadleDash()
+    {
+        if (_dashToConsume && _time > _timeLastDash + _stats.DashCooldown)
+            ExecuteDash();
+        
+        _dashToConsume = false;
+    }
+
+    private void ExecuteDash()
+    {
+        _frameVelocity.x *= _stats.DashPower;
+        _timeLastDash = _time;
+    }
+    #endregion
     private void ApplyMovement() => _rb.velocity = _frameVelocity;
 
 }
@@ -183,10 +209,10 @@ public interface IPlayerController
     public event Action Jumped;
     public Vector2 FrameInput { get; }
 }
-
 public struct FrameInput
 {
     public bool JumpDown;
     public bool JumpHeld;
+    public bool DashDown;
     public Vector2 Move;
 }

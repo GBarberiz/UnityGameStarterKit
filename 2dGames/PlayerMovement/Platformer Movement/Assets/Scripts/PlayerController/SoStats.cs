@@ -46,4 +46,11 @@ public class SoStats : ScriptableObject
 
     [Tooltip("The amount of time we buffer a jump. This allows jump input before actually hitting the ground")]
     public float JumpBuffer = .2f;
+
+    [Header("DASH")]
+    [Tooltip("The horizontal speed multiplier when dash"),Range(3,5)]
+    public float DashPower = 3.5f;
+
+    [Tooltip("The time after the dash is temporarily unavailable after it has been used."),Range(1,5)]
+    public float DashCooldown = 2f;
 }
