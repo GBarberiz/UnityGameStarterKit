@@ -32,6 +32,9 @@ public class SoStats : ScriptableObject
     [Tooltip("The immediate velocity applied when jumping")]
     public float JumpPower = 36;
 
+    [Tooltip("The maximum possible number of jumps before touching the ground")]
+    public float MaxJumps = 2;
+
     [Tooltip("The maximum vertical movement speed")]
     public float MaxFallSpeed = 40;
 

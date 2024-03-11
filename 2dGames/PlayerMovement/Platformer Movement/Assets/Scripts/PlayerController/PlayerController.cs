@@ -112,8 +112,10 @@ public class PlayerController : MonoBehaviour, IPlayerController
     #endregion
 
     #region Jumping
-
+    [SerializeField]
     private bool _jumpToConsume;
+    [SerializeField]
+    private float _jumpsToConsume;
     private bool _bufferedJumpUsable;
     private bool _endedJumpEarly;
     private bool _coyoteUsable;
@@ -127,10 +129,14 @@ public class PlayerController : MonoBehaviour, IPlayerController
         if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y > 0) 
             _endedJumpEarly = true;
 
+        if(_grounded)
+            _jumpsToConsume = _stats.MaxJumps;
+        
         if (!_jumpToConsume && !HasBufferedJump) 
             return;
+        
 
-        if (_grounded || CanUseCoyote) 
+        if (CanUseCoyote || _jumpsToConsume > 0) 
             ExecuteJump();
 
         _jumpToConsume = false;
@@ -138,6 +144,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void ExecuteJump()
     {
+        _jumpsToConsume -= 1;
         _endedJumpEarly = false;
         _timeJumpWasPressed = 0;
         _bufferedJumpUsable = false;
