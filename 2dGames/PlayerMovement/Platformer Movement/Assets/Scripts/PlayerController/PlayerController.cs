@@ -112,9 +112,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     #endregion
 
     #region Jumping
-    [SerializeField]
     private bool _jumpToConsume;
-    [SerializeField]
     private float _jumpsToConsume;
     private bool _bufferedJumpUsable;
     private bool _endedJumpEarly;

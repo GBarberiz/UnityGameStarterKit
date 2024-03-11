@@ -2531,6 +2531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 2367fdb3f5e640d439516838086d69f4, type: 2}
+  _jumpToConsume: 0
+  _jumpsToConsume: 0
 --- !u!1 &1110803608
 GameObject:
   m_ObjectHideFlags: 0
