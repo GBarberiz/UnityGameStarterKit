@@ -12,6 +12,6 @@ Allows the player to move freely in all directions in a 2D Platformer environmen
 Allows the player to move freely in all directions in a 2D Top-Down environment.
 
 ### 3. Top-Down Tile-based Movement (not finished yet)
-Defines a tile grid, allowing the player to move from tile to tile.
+Allows the player to move from one tile to another in a top-down 2D environment.
 
 Feel free to report issues or suggest improvements.
